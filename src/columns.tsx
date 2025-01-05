@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { AddTaskToBoard, GetAddTaskToBoard } from "./Redux/Slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-interface ColumnsProps {
-    boardId: string;
-    boardTitle: string;
-}
 
-const Columns: React.FC<ColumnsProps> = ({ boardId, boardTitle }) => {
+
+const Columns = () => {
     const { Taskdata } = useSelector((state: any) => state?.Board);
     const [showForm, setShowForm] = useState(false);
     const [editingTask, setEditingTask] = useState<any>(null);
@@ -89,10 +86,7 @@ const Columns: React.FC<ColumnsProps> = ({ boardId, boardTitle }) => {
                     Add Task
                 </button>
             </div>
-            <h4 className="text-white text-sm mb-4">
-                Columns for {boardTitle} (ID: {boardId})
-            </h4>
-
+           
             <div className="columns-list flex gap-x-6">
                 {["To-Do", "In Progress", "Done"].map((columnStatus) => (
                     <div key={columnStatus} className="column-item p-4 rounded w-1/3 bg-blue-500">
